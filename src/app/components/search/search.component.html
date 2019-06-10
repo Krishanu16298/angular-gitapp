@@ -1,0 +1,10 @@
+<form #userForm="ngForm" (ngSubmit)="onSubmit()">
+  <div class="input-group">
+    <input type="text" name="user" [(ngModel)]="user" class="form-control" />
+    <div class="input-group-append">
+      <button type="submit" class="btn btn-primary">
+        Search <i class="fa fa-search"></i>
+      </button>
+    </div>
+  </div>
+</form>

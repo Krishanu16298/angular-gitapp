@@ -1,0 +1,63 @@
+<div class="row">
+  <div class="col-xs-12">
+    <a routerLink="/" class="btn btn-link"
+      ><i class="fa fa-arrow-circle-o-left"></i> Back to dashboard</a
+    >
+  </div>
+</div>
+<div class="row mt-3" *ngIf="user">
+  <div class="col-md-4">
+    <div class="card card-body">
+      <img src="{{ user.avatar_url }}" style="width: 100%" />
+      <div class="card-text mt-1">
+        <a
+          href="{{ user.html_url }}"
+          target="blank"
+          class="btn btn-primary btn-block"
+          >Go to Page</a
+        >
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8 px-3 pt-5">
+    <h2>{{ user.name }}</h2>
+    <small class="text-secondary">{{ user.location }}</small
+    ><br />
+    <span class="badge badge-primary mr-1"
+      ><i class="fa fa-github"></i> Followers : {{ user.followers }}</span
+    >
+    <span class="badge badge-success mr-1"
+      ><i class="fa fa-github"></i> Repositories : {{ user.public_repos }}</span
+    >
+    <hr style="background:#aaa;height:1px" />
+    <p>{{ user.bio ? user.bio : "This user does not have a Bio!" }}</p>
+
+    <hr />
+    <h3>Repositories</h3>
+    <div class="card card-body" *ngFor="let repo of repos">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-8">
+          <h4>{{ repo.name }}</h4>
+          <p>Language : {{ repo.language ? repo.language : "Unknown" }}</p>
+          <p>
+            <span class="badge badge-dark mr-2"
+              ><i class="fa fa-code-fork"></i> Forks : {{ repo.forks }}</span
+            >
+            <span class="badge badge-danger"
+              ><i class="fa fa-star"></i> Stars :
+              {{ repo.stargazers_count }}</span
+            >
+          </p>
+        </div>
+        <div class="col-md-4">
+          <a
+            href="{{ repo.html_url }}/archive/master.zip"
+            download
+            class="btn btn-primary btn-lg btn-block"
+            ><i class="fa fa-download"></i> Download Zip</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

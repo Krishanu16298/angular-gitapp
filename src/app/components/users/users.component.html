@@ -1,0 +1,20 @@
+<div class="card mb-3" *ngFor="let user of users">
+  <div class="row no-gutters">
+    <div class="col-md-2 text-center">
+      <img src="{{ user.avatar_url }}" class="card-img" />
+    </div>
+    <div class="col-md-10">
+      <div class="card-body">
+        <h5 class="card-title">{{ user.name ? user.name : user.login }}</h5>
+        <p class="card-text">
+          {{ user.bio ? user.bio : "This user does not have a Bio!" }}
+        </p>
+        <p class="card-text">
+          <a routerLink="/user/{{ user.login }}" class="btn btn-primary"
+            >Check Repositories</a
+          >
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
